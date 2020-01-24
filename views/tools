@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id='tool_tree_view' model='ir.ui.view'>
+        <field name="name">tool.order.tree</field>
+        <field name="model">tool.order</field>
+        <field name="arch" type="xml">
+            <tree string="tools">
+                <field name="tool_type"/>
+                <field name="status"/>
+                <field name="tool_reference"/>
+                <field name="tool_weight_kg"/>
+                <field name="tool_storage_location"/>
+                <field name="tool_drawing_pdf"/>
+                <field name="tool_drawing_dxf_dwg"/>
+                <field name="image"/>
+                <field name="tool_family"/>
+                <field name="tool_diameter_mm"/>
+                <field name="design_diameter_mm"/>
+                <field name="bridge_fitted"/>
+
+            </tree>
+        </field>
+    </record>
+
+    <record id="tool_form_view" model="ir.ui.view">
+        <field name="name">tool.order.form</field>
+        <field name="model">tool.order</field>
+        <field name="arch" type="xml">
+            <form string="tools">
+                <sheet>
+                    <field name="image" widget="image" class="oe_avatar"/>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="tool_reference"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="tool_type"/>
+                            <field name="status"/>
+                            <field name="tool_weight_kg"/>
+                            <field name="tool_family"/>
+                            <field name="bridge_fitted"/>
+                        </group>
+                        <group>
+                            <field name="tool_storage_location"/>
+                            <field name="tool_drawing_pdf"/>
+                            <field name="tool_drawing_dxf_dwg"/>
+                            <field name="tool_diameter_mm"/>
+                            <field name="design_diameter_mm"/>
+                        </group>
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_tool" model="ir.action.act_window">
+        <field name="name">Tools</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">tool.order</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="domain">[]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add tool here!
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="tool_root_menu"
+              name="Tool"
+              web_icon="stage2,static/description/icon.png"
+              sequence="7"/>
+
+    <menuitem id="tool_sub_menu"
+              name="Tool" action="action_tool"
+              parent="tool_root_menu"
+              sequence="10"/>
+
+</odoo>
